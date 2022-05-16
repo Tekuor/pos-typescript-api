@@ -8,7 +8,8 @@
     "build:watch": "rimraf ./build && tsc --watch",
     "start-dev": "nodemon build/index.js",
     "start": "npm run build && node build/index.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:ci": "jest --ci"
   },
   "author": "",
   "license": "ISC",
