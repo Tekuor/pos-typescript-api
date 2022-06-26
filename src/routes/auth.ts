@@ -17,10 +17,10 @@ const login = async (request: Request, response: Response) => {
 
     if (user && (await bcrypt.compare(password, user[0].password))) {
       const token = AuthService.generateAccessToken(user[0]);
-      response.status(200).send(token);
+      response.status(200).send({ token });
+    } else {
+      throw new Error("Invalid Credentials");
     }
-
-    throw new Error("Invalid Credentials");
   } catch (error) {
     response.status(400).send(error);
   }
