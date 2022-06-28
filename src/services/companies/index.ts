@@ -39,8 +39,10 @@ class CompanyService {
     }
   }
 
-  async deleteCompany() {
+  async deleteCompany(id: Types.ObjectId) {
     try {
+      const response = await Company.findByIdAndUpdate(id, { isDeleted: true });
+      return response;
     } catch (e: any) {
       throw new Error(e.message);
     }
